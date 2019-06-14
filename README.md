@@ -1,7 +1,7 @@
 # CK(crawler-killer): a novel anti-crawler system for crawler detection and exploit
 
 ### Announcement 
-This project is not designed for any commercial use. And this project may contain some malicious attacking payload which might affect information systems, in that case, it should be used only in the scope of research field. DO NOT deploy it in the real Internet environment!
+This project is not designed for any commercial use. And this project may contain some malicious attacking payload which might affect information systems, in that case, it should be used only in the scope of research field. DO NOT deploy it in any real Internet environment!
 
 ### Motivation
 
@@ -34,17 +34,18 @@ The project is designed and implemented under the following intuitions:
    src_port: 63444
    cookie_id: 
    URL: /index.php?id&username&passwd
-   headers: {"user-agent":"google robots","":""}
-   client_signature
-   response_status
+   headers: {"user-agent":"google robots","Cookies":"xxxxx"}
+   client_signature: xxxxx
+   response_status: 200
    ```
    
    
 
-1. static analysis: static analysis is a traditional way, we will compare some important fields with the crawler features in our database, if it matches, then the request as well as the whole session should be labeled as robots. However, there might be some fields that are out of observation scope, which will reduce our accuracy in detecting crawlers;
+3. static analysis: static analysis is a traditional way, we will compare some important fields with the crawler features in our database, if it matches, then the request as well as the whole session should be labeled as robots. However, there might be some fields that are out of observation scope, which will reduce our accuracy in detecting crawlers;
 
-2. session analysis: Things become more complicate here. We focus on different level of granularity from the static analysis, we take the sessions into consideration
+4. session analysis: Things become more complicate here. We focus on different level of granularity from the static analysis, we take the sessions into consideration;
 
+5. probing analysis: If the javascript execution is supported, we then collect some extra information to help us recognize a crawler: the canvas render for a specific graph would lead to different results in different platform, and that could be utilized to identify a crawler. Furthermore, with the API of javascript, we could scan the internal network at the client side and discover more information.
 
 
 ### Methodology
