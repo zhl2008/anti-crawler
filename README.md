@@ -1,4 +1,4 @@
-# CK(crawler-killer): a novel anti-crawler system for crawler detection and exploit
+CK(crawler-killer): a novel anti-crawler system for crawler detection and exploit
 
 ### Announcement 
 This project is not designed for any commercial use. And this project may contain some malicious attacking payload which might affect information systems, in that case, it should be used only in the scope of research field. DO NOT deploy it in any real Internet environment!
@@ -25,7 +25,7 @@ The project is designed and implemented under the following intuitions:
 
 2. format-data structure/sessions: Obviously, the raw http data is not suitable for any further analysis, in that case we are supposed to extract the necessary information from the http request data. At the same time, we should group them into sessions based on their unique information.
    
-   Here is an example of our structure data:
+   Here is an example of our data structure:
    ```
    session_id: 1
    session_seq: 1
