@@ -13,6 +13,3 @@ The main stream finger-printing method is known as browser tracking technology. 
 
 ### the known projects for finger-printing
 
-
-
-My family will arrive in Singapore tomorrow. To accompany them, I will not be able to attend the group meeting tomorrow.

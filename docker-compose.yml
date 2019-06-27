@@ -1,0 +1,49 @@
+version: '2'
+services:
+ proxy:
+   container_name: proxy
+   build: ./proxy/
+   volumes:
+      - ./proxy/:/root
+   depends_on:
+    - crawler
+    - server
+   tty: true
+   ports:
+    - "8001:8080"
+    - "2201:22"
+   networks:
+     extnetwork:
+       ipv4_address: 172.16.10.2
+
+ crawler:
+   container_name: crawler
+   build: ./crawler/
+   volumes:
+      - ./crawler/:/root
+   tty: true
+   ports:
+    - "2202:22"
+   networks:
+     extnetwork:
+       ipv4_address: 172.16.10.3
+
+ server:
+   container_name: server
+   build: ./server/Web/
+   volumes:
+    - ./server/Web:/root
+    - ./server/source:/var/www/html
+   tty: true
+   ports:
+    - "2303:22"
+    - "8002:80"
+   networks:
+     extnetwork:
+       ipv4_address: 172.16.10.4
+networks:
+ extnetwork:
+   ipam:
+     config:
+       - subnet: 172.16.10.0/24
+         gateway: 172.16.10.1

@@ -13,6 +13,7 @@ RUN pip3 install -U cryptography==2.2.1
 RUN cd /root/mitmproxy-4.0.4 && python3 setup.py install
 
 WORKDIR /root
+ENTRYPOINT /root/run.sh
 
 
 
